@@ -18,55 +18,49 @@ struct Book {
 };
 
 
+
 void check_number(FILE *input_data, int *s) {
     int ret_code;
-    char buffer[100]; // i guess my input won't be longer than 100 symbols
     do {
-        ret_code = fscanf(input_data, " %99[^\n]%*c", buffer); // read the input as a string firstly
-        if (ret_code == 1) {
-            int isValid = 1;
-            for (int i = 0; buffer[i] != '\0'; i++) {
-                if (!isdigit(buffer[i])) {
-                    isValid = 0;
-                    break;
-                }
-            }
-            if (isValid) {
-                *s = atoi(buffer); // convert the string to an integer 
-                if (*s > 0) {
-                    break; // if successful, break the loop
-                }
-            }
-        }
-        printf("Invalid input. Please enter a valid positive integer:\n");
-    } while (1);
+        ret_code = fscanf(input_data, "%d", s);
+        //while (getchar() != '\n');  // clear the buffer (as not using fgets)
+    } while (ret_code != 1 || *s <= 0);
 }
+
+
+// void check_year(FILE *input_data, int *s) {
+//     int ret_code;
+//     char buffer[100]; 
+//     do {
+//         ret_code = fscanf(input_data, " %99[^\n]%*c", buffer); 
+//         if (ret_code == 1) {
+//             int isValid = 1;
+//             for (int i = 0; buffer[i] != '\0'; i++) {
+//                 if (!isdigit(buffer[i])) {
+//                     isValid = 0;
+//                     break;
+//                 }
+//             }
+//             if (isValid ) {
+//                 *s = atoi(buffer); 
+//                 if (*s >= 1458 && *s<= 2024) {
+//                     break;
+//                 }
+//             }
+//         }
+//         printf("Invalid input. Please enter a valid positive integer:\n");
+//         break;
+//     } while (ret_code != 1 || *s <= 0);
+// }
+
 
 void check_year(FILE *input_data, int *s) {
     int ret_code;
-    char buffer[100]; 
     do {
-        ret_code = fscanf(input_data, " %99[^\n]%*c", buffer); 
-        if (ret_code == 1) {
-            int isValid = 1;
-            for (int i = 0; buffer[i] != '\0'; i++) {
-                if (!isdigit(buffer[i])) {
-                    isValid = 0;
-                    break;
-                }
-            }
-            if (isValid ) {
-                *s = atoi(buffer); 
-                if (*s >= 1458 && *s<= 2024) {
-                    break;
-                }
-            }
-        }
-        printf("Invalid input. Please enter a valid positive integer:\n");
-        break;
-    } while (1);
+        ret_code = fscanf(input_data, "%d", s);
+        //while (getchar() != '\n');  // clear the buffer (as not using fgets)
+    } while (ret_code != 1 || *s <= 0 || *s<1458 || *s > 2024);
 }
-
 void check_string(FILE *input_data, char s[]) {
     int invalid_input;
     do {
@@ -142,3 +136,4 @@ int main() {
     
     return 0;
 }
+
