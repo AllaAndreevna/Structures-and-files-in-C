@@ -97,17 +97,17 @@ void input(struct Book *books, const int numStructs, FILE *input_data) {
 }
 
 void solution(struct Book *books, const int numStructs, FILE *output_data) {
-    int minPrice = books->price;
+    int minYear = books->publisherInfo.god;
     for (int i = 1; i < numStructs; i++) {
-        if ((books + i)->price < minPrice) {
-            minPrice = (books + i)->price;
+        if ((books + i)->publisherInfo.god < minYear) {
+            minYear = (books + i)->publisherInfo.god;
         }
     }
      
-    fprintf(output_data, "Cities with the cheapest books:\n");
+    fprintf(output_data, "Publishing companies with the cheapest books:\n");
     for (int i = 0; i < numStructs; i++) {
-        if ((books + i)->price == minPrice) {
-            fprintf(output_data, "%s\n", (books + i)->publisherInfo.gor);
+        if ((books + i)->publisherInfo.god == minYear) {
+            fprintf(output_data, "%s\n", (books + i)->publisherInfo.naz);
         }
     }
 }
@@ -136,4 +136,3 @@ int main() {
     
     return 0;
 }
-
