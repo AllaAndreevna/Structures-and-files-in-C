@@ -84,7 +84,7 @@ void output(struct Book *books, const int numStructs) {
     }
 }
 
-void solution(struct Book *books, const int numStructs){
+char** solution(struct Book *books, const int numStructs, int *numResults){
     float minPrice = books[0].price;
     for (int i = 0; i < numStructs; i++) {
         if (books[i].price < minPrice) {
@@ -92,26 +92,56 @@ void solution(struct Book *books, const int numStructs){
         }
     }
 
-    printf("\nCities where the cheapest books are published:\n");
+    char **result = (char **)malloc(numStructs * sizeof(char *));
+    if (result == NULL) {
+        printf("Memory failed.\n");
+        *numResults = 0;
+        return NULL;
+    }
+
+    *numResults = 0;
+
     for (int i = 0; i < numStructs; i++) {
         if (books[i].price == minPrice) {
-            printf("%s\n", books[i].publisherInfo.gor);
+            int found = 0;
+            for (int j = 0; j < *numResults; j++) {
+                if (strcmp(books[i].publisherInfo.gor, result[j]) == 0) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                result[*numResults] = strdup(books[i].publisherInfo.gor);
+                (*numResults)++;
+            }
         }
     }
+    return result;
 }
 
 int main() {
     int numStructs;
-
     printf("Enter the number of books: ");
     scanf("%d", &numStructs);
-    while (getchar() != '\n'); 
+    while (getchar() != '\n');  
 
     struct Book books[numStructs];
-
     input(books, numStructs);
     output(books, numStructs);
-    solution(books, numStructs);
+
+    int numResults;
+    char **result = solution(books, numStructs, &numResults);
+    if (result != NULL) {
+        printf("\nCities where the cheapest books are published:\n");
+        for (int i = 0; i < numResults; i++) {
+            printf("%s\n", result[i]);
+            free(result[i]);  
+        }
+        free(result);  
+    }
+    
 
     return 0;
-}     
+}
+
+
