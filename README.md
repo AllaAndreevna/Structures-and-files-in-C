@@ -7,13 +7,9 @@ The code uses special functions to input the data (with secure checking), output
 
 ## Installation. Task 1
 
-On the file ***"Task 1"*** the code works only with a **concole** (so you can just copy and paste it in any compiler and it will work).
+On the file ***"Task 1"*** the code works only with a **concole** (so you can just copy and paste it in any compiler and it will work correctly).
 
 
-```bash
-copy
-paste
-```
 
 ## Installation. Task 2
 
@@ -23,7 +19,7 @@ Then run the code.
 You will see console asking for a number of books. Put the exact number of whose you've added in ***"input_data.txt"***. Then press **enter**.
 A new file ***"output_data.txt"*** will be created. It will include a message and a list of cities where the cheapest books are published.
 
-You may use this code in CodeBlocks, VisualStudioCode or even in online C :) [the best site of the entire world]([onlinegdb.com](https://www.onlinegdb.com/online_c_compiler))
+You may use this code in CodeBlocks, VisualStudioCode or even in online C :) [the best site of the entire world](https://www.onlinegdb.com/online_c_compiler)
 
 
 
@@ -43,7 +39,6 @@ struct Book {
     char author[100];
     struct izdatel publisherInfo;
 };
-
 ```
 So, you need an ***"input_data.txt"*** file like that:
 ```
@@ -60,5 +55,5 @@ THE CITY WHERE THE BOOK IS PUBLISHED (only symbols)
 
 ## Contributing
 
-Please make sure to add an "input_data.txt" file on the same directory as the code ("Task 1" or "Task 2").
+Please make sure to add an ***"input_data.txt"*** file on the same directory as the code ("Task 1" or "Task 2").
 
