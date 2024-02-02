@@ -23,7 +23,7 @@ Then run the code.
 You will see console asking for a number of books. Put the exact number of whose you've added in ***"input_data.txt"***. Then press **enter**.
 A new file ***"output_data.txt"*** will be created. It will include a message and a list of cities where the cheapest books are published.
 
-You may use this code in CodeBlocks, VisualStudioCode or even in online C :) [the best site of the entire world](onlinegdb.com)
+You may use this code in CodeBlocks, VisualStudioCode or even in online C :) [the best site of the entire world]([onlinegdb.com](https://www.onlinegdb.com/online_c_compiler))
 
 
 
